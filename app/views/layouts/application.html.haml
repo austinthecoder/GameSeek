@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title GameSeek
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .container
+      #header.row
+        .span12
+          %h1= link_to 'GameSeek', root_url
+          %p
+            %em What will you find?
+      .row
+        .span12
+          = yield

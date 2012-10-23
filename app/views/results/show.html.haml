@@ -1,0 +1,10 @@
+%h2 Games
+
+- if @survey_response.games.any?
+  %ul#games
+    - @survey_response.games.each do |game|
+      %li= game.title
+- else
+  %p
+    Sorry, we couldn't find any games for you.
+    = link_to "Try again?", survey_response_questions_path(@survey_response)

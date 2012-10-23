@@ -1,0 +1,4 @@
+- if survey_response.errors.any?
+  .alert.alert-error
+    - survey_response.errors.full_messages.each do |message|
+      %div= message

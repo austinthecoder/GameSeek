@@ -2,4 +2,15 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        survey_response:
+          attributes:
+            person_name:
+              blank: "is needed"
+    attributes:
+      survey_response:
+        person_name: "Your name"
+        min_price: "Min. price"
+        max_price: "Min. price"

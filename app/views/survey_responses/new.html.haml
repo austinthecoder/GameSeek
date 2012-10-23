@@ -1,0 +1,12 @@
+%h2 Get Started
+
+= form_for @survey_response do |f|
+  = render 'survey_responses/errors', :survey_response => @survey_response
+
+  = f.label :person_name, 'What is your name?'
+  = f.text_field :person_name
+
+  = f.label :platform_id, 'Choose your platform'
+  = f.select :platform_id, Platform.all.map { |platform| [platform.name, platform.id] }
+
+  .form-actions= f.button "Let's go!", :class => 'btn btn-primary'

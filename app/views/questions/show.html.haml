@@ -1,0 +1,17 @@
+%h2 Few Questions
+
+= form_for @survey_response do |f|
+  = render 'survey_responses/errors', :survey_response => @survey_response
+
+  = f.label :genre_id, 'What genre?'
+  = f.select :genre_id, Genre.all.map { |genre| [genre.name, genre.id] }
+
+  - price_options = [['Any', nil]] + [10, 20, 30, 40, 50, 60, 70, 80, 90].map { |price| ["$#{price}", price] }
+
+  = f.label :min_price, 'Min. Price'
+  = f.select :min_price, price_options
+
+  = f.label :max_price, 'Max. Price'
+  = f.select :max_price, price_options
+
+  .form-actions= f.button "Show me the games!", :class => 'btn btn-primary'

@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
 gem "pg", "~> 0.14.1"
+gem "haml-rails", "~> 0.3.5"
+gem "active_hash", "~> 0.9.12"
 
 group :assets do
   gem 'sass-rails', '~> 3.2.3'
