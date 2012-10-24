@@ -62,4 +62,31 @@ describe SurveyResponse do
       end
     end
   end
+
+  describe "as_json" do
+    it "is a hash containing the person_name, platform, genre, min & max prices and games" do
+      platform = Platform.find_by_name! 'PlayStation 3'
+      genre = Genre.find_by_name! 'Sports'
+      game1 = double 'game', :title => 'Game1'
+      game2 = double 'game', :title => 'Game2'
+
+      survey_response = SurveyResponse.new(
+        :person_name => 'Jack Smith',
+        :platform_id => platform.id,
+        :genre_id => genre.id,
+        :min_price => 30,
+        :max_price => 50
+      )
+      survey_response.stub(:games) { [game1, game2] }
+
+      expect(survey_response.as_json).to eq({
+        :person_name => 'Jack Smith',
+        :platform => 'PlayStation 3',
+        :genre => 'Sports',
+        :min_price => 30,
+        :max_price => 50,
+        :games => ['Game1', 'Game2']
+      })
+    end
+  end
 end

@@ -9,6 +9,17 @@ class SurveyResponse < ActiveRecord::Base
     games.all
   end
 
+  def as_json
+    {
+      :person_name => person_name,
+      :platform => Platform.find_by_id(platform_id).try(:name),
+      :genre => Genre.find_by_id(genre_id).try(:name),
+      :min_price => min_price,
+      :max_price => max_price,
+      :games => games.map(&:title)
+    }
+  end
+
   private
 
   def validate_min_price_is_not_greater_than_max_price
