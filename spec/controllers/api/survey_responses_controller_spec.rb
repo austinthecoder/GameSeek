@@ -10,7 +10,8 @@ describe Api::SurveyResponsesController do
         ] }
 
         get :index, :format => :json
-        response.body.should == '[{"a":1,"b":"2"},{"a":2,"b":"3"}]'
+        expect(response.status).to eq 200
+        expect(response.body).to eq '[{"a":1,"b":"2"},{"a":2,"b":"3"}]'
       end
     end
 
